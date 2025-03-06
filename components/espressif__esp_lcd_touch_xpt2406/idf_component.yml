@@ -1,0 +1,8 @@
+dependencies:
+  esp_lcd_touch:
+    public: true
+    version: ^1.0.4
+  idf:
+    version: '>=5.0'
+description: ESP LCD Touch STMPE610 - touch controller XPT2406
+version: 1.0.6

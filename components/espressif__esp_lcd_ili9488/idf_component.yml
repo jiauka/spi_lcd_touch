@@ -1,0 +1,7 @@
+dependencies:
+  cmake_utilities:
+    version: 0.*
+  idf:
+    version: '>=4.4'
+description: ESP LCD ILI9488
+version: 1.2.0
