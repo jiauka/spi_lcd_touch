@@ -13,6 +13,7 @@ static lv_display_rotation_t rotation = LV_DISP_ROTATION_0;
 static lv_style_t style_btn;
 static lv_style_t style_button_pressed;
 static lv_style_t style_button_red;
+void lv_example_libpng_1(void);
 
 static void btn_cb(lv_event_t * e)
 {
@@ -31,15 +32,13 @@ static void set_angle(void * obj, int32_t v)
 void example_lvgl_demo_ui(lv_display_t *disp)
 {
     lv_obj_t *scr = lv_display_get_screen_active(disp);
-#if 1
     btn = lv_button_create(scr);
     lv_obj_t * lbl = lv_label_create(btn);
     lv_label_set_text_static(lbl, LV_SYMBOL_REFRESH" ROTATE");
     lv_obj_align(btn, LV_ALIGN_BOTTOM_LEFT, 30, -30);
     /*Button event*/
     lv_obj_add_event_cb(btn, btn_cb, LV_EVENT_CLICKED, disp);
-#if 1
-
+#if 0
     /*Create an Arc*/
     lv_obj_t * arc = lv_arc_create(scr);
     lv_arc_set_rotation(arc, 270);
@@ -57,18 +56,21 @@ void example_lvgl_demo_ui(lv_display_t *disp)
     lv_anim_set_repeat_delay(&a, 500);
     lv_anim_set_values(&a, 0, 100);
     lv_anim_start(&a);
-#endif
     lv_disp_set_rotation(disp, LV_DISP_ROTATION_90);
-#else
-
-    /*Create another button and use the red style too*/
-    lv_obj_t * btn2 = lv_button_create(lv_screen_active());
-    lv_obj_remove_style_all(btn2);                      /*Remove the styles coming from the theme*/
-    lv_obj_set_pos(btn2, 100, 100);
-    lv_obj_set_size(btn2, 32, 32);
-    lv_obj_add_style(btn2, &style_btn, 0);
-    lv_obj_add_style(btn2, &style_button_red, 0);
-//    lv_obj_add_style(btn2, &style_button_pressed, LV_STATE_PRESSED);
-    lv_obj_set_style_radius(btn2, LV_RADIUS_CIRCLE, 0); /*Add a local style too*/
 #endif
+  lv_example_libpng_1();
 }
+#if 0
+
+
+/**
+ * Open a PNG image from a file
+ */
+void lv_example_libpng_1(void)
+{
+  LV_IMAGE_DECLARE(cpr72);
+  lv_obj_t * img1 = lv_image_create(lv_screen_active());
+  lv_image_set_src(img1, &cpr72);
+  lv_obj_align(img1, LV_ALIGN_CENTER, 0, 0);
+}
+#endif

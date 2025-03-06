@@ -1,3 +1,7 @@
+python3 -m  LVGLImage --ofmt C --cf RGB888 -o main cpr72.png
+
+
+
  python -m esptool --chip esp32 -b 460800 --before default_reset --after hard_reset write_flash --flash_mode dio --flash_size 2MB --flash_freq 40m 0x1000 build/bootloader/bootloader.bin 0x8000 build/partition_table/partition-table.bin 0x10000 build/spi_lcd_touch.bin
 
 openocd -f board/esp32-wrover-kit-3.3v.cfg -c "program_esp  ./build/bootloader/bootloader.bin 0x1000 verify exit"
